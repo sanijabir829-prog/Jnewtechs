@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JAB-SAN TECH | Technology Intelligence Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{--blue:#1769ff;--dark:#101a32;--light:#f3f6fc;--white:#fff;--text:#25334d;--muted:#718096}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:var(--light);color:var(--text)}
+header{background:var(--dark);color:white;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.logo{font-size:23px;font-weight:bold}.logo span{color:#39b6ff}header p{font-size:12px;color:#b9c9e8}
+.layout{display:flex;min-height:calc(100vh - 70px)}
+.sidebar{width:230px;background:var(--dark);padding:20px 12px;flex-shrink:0}
+.sidebar button{display:block;width:100%;padding:14px;margin-bottom:8px;border:0;background:transparent;color:#d4def0;text-align:left;border-radius:7px;cursor:pointer;font-size:14px}
+.sidebar button:hover,.sidebar button.active{background:var(--blue);color:white}
+main{flex:1;padding:25px;min-width:0}.page{display:none}.page.active{display:block}
+.page h1{margin-bottom:8px;font-size:25px}.subtitle{color:var(--muted);margin-bottom:25px;line-height:1.5}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:17px;margin-bottom:25px}
+.card{background:white;padding:22px;border-radius:12px;box-shadow:0 3px 12px rgba(0,0,0,.05)}
+.card h3{color:var(--muted);font-size:13px;margin-bottom:12px}.card strong{font-size:27px;color:var(--blue)}
+.panel{background:white;padding:20px;border-radius:12px;margin-bottom:20px;box-shadow:0 3px 12px rgba(0,0,0,.05)}
+.panel h2{font-size:18px;margin-bottom:18px}.chart-container{position:relative;height:300px;max-width:100%}
+.two-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.career{background:white;padding:20px;margin-bottom:15px;border-radius:10px;border-left:4px solid var(--blue)}
+.career h3{margin-bottom:9px}.career p{color:var(--muted);line-height:1.6}
+.badge{display:inline-block;background:#e8f0ff;color:#1769ff;padding:6px 10px;border-radius:20px;font-size:12px;margin-top:10px}
+.note{background:#fff8df;padding:13px;border-radius:8px;font-size:12px;color:#725a14;line-height:1.5;margin-top:15px}
+footer{text-align:center;padding:25px;color:var(--muted);font-size:12px}
+@media(max-width:700px){.layout{display:block}.sidebar{width:100%;display:flex;overflow-x:auto;padding:10px;gap:7px}.sidebar button{width:auto;white-space:nowrap;margin:0;padding:12px}main{padding:15px}.page h1{font-size:22px}}
+</style>
+</head>
+<body>
+<header><div class="logo">JAB-SAN <span>TECH</span></div><p>TECHNOLOGY TRENDS &amp; SKILLS INTELLIGENCE</p></header>
+<div class="layout">
+<nav class="sidebar">
+<button class="active" data-page="overview">🏠 Overview</button>
+<button data-page="trends">📈 Tech Trends</button>
+<button data-page="ai">🤖 AI Adoption</button>
+<button data-page="skills">💻 Skills Analytics</button>
+<button data-page="careers">🚀 Career Insights</button>
+<button data-page="about">ℹ️ About Project</button>
+</nav>
+<main>
+<section id="overview" class="page active">
+<h1>Technology Intelligence Dashboard</h1><p class="subtitle">Explore technology trends, digital skills and emerging opportunities.</p>
+<div class="cards">
+<div class="card"><h3>Technology Categories</h3><strong>06</strong></div>
+<div class="card"><h3>Programming Skills</h3><strong>08</strong></div>
+<div class="card"><h3>Career Areas</h3><strong>05</strong></div>
+<div class="card"><h3>Dashboard Status</h3><strong>Active</strong></div>
+</div>
+<div class="two-columns">
+<div class="panel"><h2>Programming Skills Overview</h2><div class="chart-container"><canvas id="overviewChart"></canvas></div></div>
+<div class="panel"><h2>Technology Areas</h2><div class="chart-container"><canvas id="categoryChart"></canvas></div></div>
+</div>
+<div class="note">Note: All numerical values currently displayed are illustrative demonstration data, not verified survey statistics.</div>
+</section>
+<section id="trends" class="page">
+<h1>Technology Trends</h1><p class="subtitle">Explore selected areas of modern technology.</p>
+<div class="panel"><h2>Illustrative Technology Growth Index</h2><div class="chart-container"><canvas id="trendChart"></canvas></div></div>
+<div class="cards"><div class="card"><h3>Artificial Intelligence</h3><strong>AI</strong></div><div class="card"><h3>Cloud Computing</h3><strong>Cloud</strong></div><div class="card"><h3>Cybersecurity</h3><strong>Security</strong></div></div>
+</section>
+<section id="ai" class="page">
+<h1>Artificial Intelligence Adoption</h1><p class="subtitle">Understand different applications of artificial intelligence.</p>
+<div class="two-columns">
+<div class="panel"><h2>Illustrative AI Application Distribution</h2><div class="chart-container"><canvas id="aiChart"></canvas></div></div>
+<div class="panel"><h2>AI Applications</h2><p>• Education and learning</p><br><p>• Healthcare technology</p><br><p>• Business automation</p><br><p>• Data analysis</p><br><p>• Software development</p></div>
+</div>
+</section>
+<section id="skills" class="page">
+<h1>Skills Analytics</h1><p class="subtitle">Explore important programming and digital skills.</p>
+<div class="panel"><h2>Illustrative Programming Skills Index</h2><div class="chart-container"><canvas id="skillsChart"></canvas></div></div>
+<div class="cards"><div class="card"><h3>Python</h3><strong>90</strong></div><div class="card"><h3>JavaScript</h3><strong>82</strong></div><div class="card"><h3>SQL</h3><strong>76</strong></div><div class="card"><h3>Java</h3><strong>55</strong></div></div>
+</section>
+<section id="careers" class="page">
+<h1>Technology Career Insights</h1><p class="subtitle">Discover careers in the technology industry.</p>
+<div class="career"><h3>📊 Data Analyst</h3><p>Collects, processes and interprets data to support decision-making.</p><span class="badge">Data Science</span></div>
+<div class="career"><h3>💻 Software Developer</h3><p>Designs and builds software applications and digital solutions.</p><span class="badge">Programming</span></div>
+<div class="career"><h3>🤖 AI / Machine Learning Engineer</h3><p>Develops intelligent systems that learn from data.</p><span class="badge">Artificial Intelligence</span></div>
+<div class="career"><h3>🔐 Cybersecurity Analyst</h3><p>Helps protect computer systems, networks and information.</p><span class="badge">Cybersecurity</span></div>
+<div class="career"><h3>☁️ Cloud Engineer</h3><p>Builds and maintains cloud-based computing infrastructure.</p><span class="badge">Cloud Computing</span></div>
+</section>
+<section id="about" class="page">
+<h1>About JAB-SAN TECH</h1><p class="subtitle">Technology Trends and Skills Intelligence Dashboard.</p>
+<div class="panel"><h2>Project Description</h2><p style="line-height:1.8">JAB-SAN TECH is a technology intelligence dashboard developed to demonstrate the application of data science, data analysis and visualization in understanding the changing technology landscape.</p></div>
+<div class="panel"><h2>Project Objectives</h2><p>1. Explore emerging technology trends.</p><br><p>2. Examine artificial intelligence applications.</p><br><p>3. Understand programming and digital skills.</p><br><p>4. Highlight technology career opportunities.</p><br><p>5. Communicate insights through data visualization.</p></div>
+<div class="panel"><h2>Technologies Used</h2><p>HTML5, CSS3, JavaScript and Chart.js.</p></div>
+<div class="panel"><h2>Developer</h2><h3>JABIR SANI</h3><p>Data Science Learner | 3MTT Nigeria</p></div>
+</section>
+</main>
+</div>
+<footer>© 2026 JAB-SAN TECH | Exploring Technology Through Data.</footer>
+<script>
+const buttons=document.querySelectorAll(".sidebar button");
+const pages=document.querySelectorAll(".page");
+buttons.forEach(button=>button.addEventListener("click",()=>{
+ const target=button.dataset.page;
+ buttons.forEach(b=>b.classList.remove("active"));
+ pages.forEach(p=>p.classList.remove("active"));
+ button.classList.add("active");
+ document.getElementById(target).classList.add("active");
+}));
+Chart.defaults.font.family="Arial";
+Chart.defaults.color="#718096";
+function createChart(id,type,labels,data,colors,title){
+ const element=document.getElementById(id);
+ if(!element)return;
+ new Chart(element,{type,data:{labels,datasets:[{label:title,data,backgroundColor:colors,borderColor:"#1769ff",borderWidth:2,tension:.35,fill:type==="line"}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:type!=="bar"&&type!=="line",position:"bottom"}},scales:(type==="bar"||type==="line")?{y:{beginAtZero:true}}:{}}});
+}
+createChart("overviewChart","bar",["Python","JavaScript","SQL","TypeScript","Java","C++"],[90,82,76,68,55,44],"#1769ff","Illustrative skills index");
+createChart("categoryChart","doughnut",["AI","Cloud","Cybersecurity","Data Science","Web Development"],[30,20,18,17,15],["#1769ff","#39b6ff","#20b486","#ffb84d","#9b59b6"],"Technology categories");
+createChart("trendChart","line",["2021","2022","2023","2024","2025","2026"],[30,40,48,62,75,88],"rgba(23,105,255,0.15)","Illustrative growth index");
+createChart("aiChart","doughnut",["Education","Healthcare","Business","Data Analysis","Development"],[25,15,25,20,15],["#1769ff","#20b486","#ffb84d","#9b59b6","#39b6ff"],"Illustrative distribution");
+createChart("skillsChart","bar",["Python","JavaScript","SQL","TypeScript","Java","C++"],[90,82,76,68,55,44],"#20b486","Illustrative skills index");
+</script>
+</body>
+</html>
